@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Important Question 💗</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: #ffd6e0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+padding-top: 40px;
+}
+
+/* CARD */
+.card {
+  background: #ffe9ef;
+  padding: 40px;
+  width: 95%;
+  max-width: 960px;
+  min-height: 500px;
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+  position: relative;
+  z-index: 2;
+}
+
+/* IMAGE */
+.image-wrap {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.image-wrap img {
+  width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+}
+
+/* TEXT */
+h1 { font-size: 1.9rem; }
+p { font-size: 1rem; }
+
+/* BUTTONS */
+button {
+  padding: 14px 28px;
+  font-size: 1.05rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+.yes {
+  background: red;
+  color: white;
+}
+.no {
+  background: blue;
+  color: white;
+  position: relative;
+  transition: left 0.2s ease, top 0.2s ease;
+}
+
+/* FADE */
+.fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* HEARTS BACKGROUND */
+.hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hearts span {
+  position: absolute;
+  top: -10%;
+  font-size: 24px;
+  opacity: 0.85;
+
+  /* Animation */
+  animation-name: fall;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+
+  /* Horizontal start */
+  left: calc(100% * var(--x));
+
+  /* Individual randomness */
+  --drift: calc((var(--d) - 0.5) * 80px);
+}
+
+/* Individual variation */
+.hearts span:nth-child(1)  { --x: .05; --d: .2; animation-duration: 9s;  animation-delay: 0s; }
+.hearts span:nth-child(2)  { --x: .12; --d: .7; animation-duration: 11s; animation-delay: 1.5s; }
+.hearts span:nth-child(3)  { --x: .20; --d: .4; animation-duration: 8s;  animation-delay: 0.8s; }
+.hearts span:nth-child(4)  { --x: .30; --d: .9; animation-duration: 12s; animation-delay: 2.2s; }
+.hearts span:nth-child(5)  { --x: .42; --d: .1; animation-duration: 10s; animation-delay: 1.1s; }
+.hearts span:nth-child(6)  { --x: .55; --d: .6; animation-duration: 9s;  animation-delay: 2.6s; }
+.hearts span:nth-child(7)  { --x: .63; --d: .3; animation-duration: 11s; animation-delay: 0.4s; }
+.hearts span:nth-child(8)  { --x: .72; --d: .8; animation-duration: 8.5s;animation-delay: 1.9s; }
+.hearts span:nth-child(9)  { --x: .84; --d: .5; animation-duration: 10.5s;animation-delay: 0.6s; }
+.hearts span:nth-child(10) { --x: .94; --d: .2; animation-duration: 9.5s;animation-delay: 2.9s; }
+
+@keyframes fall {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.85;
+  }
+
+  25% {
+    transform: translate(calc(var(--drift) * -1), 30vh) rotate(90deg);
+  }
+
+  50% {
+    transform: translate(var(--drift), 60vh) rotate(180deg);
+  }
+
+  75% {
+    transform: translate(calc(var(--drift) * -0.6), 90vh) rotate(270deg);
+  }
+
+  100% {
+    transform: translate(calc(var(--drift) * 0.6), 120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+
+
+/* CONFETTI */
+.confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+.confetti span {
+  position: absolute;
+  top: -10px;
+  width: 8px;
+  height: 14px;
+  animation: confettiFall linear forwards;
+}
+@keyframes confettiFall {
+  to { transform: translateY(110vh) rotate(720deg); }
+}
+
+/* GIFT */
+.gift-box {
+  font-size: 90px;
+  margin-top: 30px;
+  cursor: pointer;
+  animation: bounce 1.5s infinite;
+}
+.gift-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
+}
+
+.icon-box {
+  font-size: 80px;
+  cursor: pointer;
+  animation: bounce 1.5s infinite;
+}
+
+.icon-label {
+  font-size: 0.85rem;
+  color: #555;
+  margin-top: 6px;
+}
+.gift-text {
+  font-size: 0.85rem;
+  color: #555;
+}
+@keyframes bounce { 50% { transform: translateY(-8px); } }
+
+.letter {
+  background: #fffbe6;
+  padding: 26px;
+  border-radius: 12px;
+  max-width: 600px;
+  margin: 0 auto 20px;
+  text-align: left;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.letter,
+.letter * {
+  font-family: 'Great Vibes', cursive !important;
+  font-size: 1.6rem;
+  line-height: 1.7;
+  letter-spacing: 0.5px;
+}
+.memory-polaroid {
+  background: #fffbe6;
+  padding: 14px;
+  border-radius: 12px;
+  width: 260px;
+  margin: 30px auto 0;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.18);
+  text-align: center;
+}
+
+.memory-polaroid img {
+  width: 100%;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.memory-polaroid p {
+  margin-top: 10px;
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.3rem;
+  color: #333;
+}
+/* MEMORIES PAGE */
+.memories-title {
+  font-size: 2rem;
+  margin-bottom: 25px;
+}
+
+.memories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto 35px;
+}
+.memory-card {
+  background: #fffbe6;
+  padding: 14px;
+  border-radius: 14px;
+  box-shadow: 0 12px 26px rgba(0,0,0,0.18);
+  transform: rotate(var(--r));
+}
+
+.memory-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.memory-card p {
+  margin-top: 8px;
+  text-align: center;
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.2rem;
+}
+/* HOVER BLINK EFFECT */
+.memory-card {
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.memory-card:hover {
+  animation: blink 0.9s ease-in-out infinite;
+  cursor: pointer;
+}
+
+@keyframes blink {
+  0% {
+    box-shadow: 0 0 0 rgba(255, 77, 109, 0);
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(255, 77, 109, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(255, 77, 109, 0);
+  }
+}
+/* FULLSCREEN VIEWER */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.lightbox::after {
+  content: "✕";
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEARTS -->
+<div class="hearts">
+  <span>💗</span><span>💖</span><span>💕</span><span>💗</span><span>💖</span>
+  <span>💕</span><span>💗</span><span>💖</span><span>❤️</span><span>❤️</span>
+</div>
+
+<!-- CARD -->
+<div class="card" id="card">
+  <h1>Hellow Manu🖤</h1>
+
+  <div class="image-wrap">
+    <img src="Money$.png" alt="Her photo">
+  </div>
+
+  <h1>Will you be my Valentine👉👈?</h1>
+  <p>Kya dhoomchuddar zindagi hai bhai, but I still wanna proceed it with you</p>
+
+  <button class="yes" onclick="accept()">YES</button>
+  <button class="no" onmouseover="move(this)">NO</button>
+</div>
+
+<script>
+/* NO BUTTON RUNS */
+function move(btn) {
+  const card = document.getElementById("card");
+  const rect = card.getBoundingClientRect();
+  const x = Math.random() * (rect.width - btn.offsetWidth);
+  const y = Math.random() * (rect.height - btn.offsetHeight);
+  btn.style.position = "absolute";
+  btn.style.left = x + "px";
+  btn.style.top = y + "px";
+}
+
+/* YES ACTION */
+function accept() {
+  launchConfetti();
+  const card = document.getElementById("card");
+
+  card.innerHTML = `
+    <div class="fade-in">
+      <h1>Happy Valentines Day ❤️</h1>
+
+      <h3>
+        Jaaa, now toh u said yes 😔😔  
+        are u ok bacchaa 💔 call kruun? 🕺
+      </h3>
+
+      <h3>
+        Ishmarty I am dear 😎😎  
+        thanks for choosing me over ur bhondaa sa guphi 😈
+      </h3>
+
+      <h3>
+        That evening — November 29th, 17:13 —  
+        when I texted you… I had no idea this 5'11 person  
+        would take me this far 😔
+      </h3>
+
+      <!-- MEMORY -->
+      <div class="memory-polaroid fade-in">
+        <img src="What.jpeg" alt="Origin">
+        <p>Origin</p>
+      </div>
+
+      <!-- GIFT -->
+      <div class="gift-row">
+
+  <!-- LETTER -->
+  <div class="icon-box" onclick="openLetter()">
+    🎁
+    <div class="icon-label">A lil something</div>
+  </div>
+
+  <!-- MEMORIES -->
+  <div class="icon-box" onclick="openMemories()">
+    📸
+    <div class="icon-label">Us</div>
+  </div>
+
+</div>
+  `;
+
+  document.querySelectorAll(".hearts span")
+    .forEach(h => h.style.animationDuration = "2.8s");
+}
+
+
+/* CONFETTI */
+function launchConfetti() {
+  const c = document.createElement("div");
+  c.className = "confetti";
+  document.body.appendChild(c);
+  const colors = ["#ff4d6d","#ff8fab","#ffc2d1","#ffd6e0","#fff"];
+  for(let i=0;i<80;i++){
+    const p=document.createElement("span");
+    p.style.left=Math.random()*100+"vw";
+    p.style.backgroundColor=colors[Math.floor(Math.random()*colors.length)];
+    p.style.animationDuration=3+Math.random()*2+"s";
+    c.appendChild(p);
+  }
+  setTimeout(()=>c.remove(),5000);
+}
+
+/* LETTER */
+function openLetter() {
+  const card = document.getElementById("card");
+  card.innerHTML = `
+    <div class="fade-in">
+      <h1>A Letter For You!</h1>
+      <div class="letter">
+        <p>Gal,</p>
+        <p>
+          Thank you for being my person. I wish myself to be with you in
+         every season of springs. You are indeed my home, comfort and safest place.
+        </p>
+        <p>
+          Be exactly who you are and never apologize for it. No one can replace
+          you nigga.
+        </p>
+         <p> Uzzi🖤 </p>
+         
+         
+      </div>
+      <button class="yes" onclick="accept()">← Back</button>
+    </div>
+  `;
+}
+function openMemories() {
+  const card = document.getElementById("card");
+
+  card.innerHTML = `
+    <div class="fade-in">
+      <h1 class="memories-title">US</h1>
+
+      <div class="memories-grid">
+
+        <div class="memory-card" style="--r:-2deg">
+          <img src="nah.jpeg" onclick="openImage(this.src)">
+          <p>Missy Miss me?</p>
+        </div>
+
+        <div class="memory-card" style="--r:1.5deg">
+          <img src="c'mon.jpeg" onclick="openImage(this.src)">
+          <p>Just in Time</p>
+        </div>
+
+        <div class="memory-card" style="--r:-1deg">
+          <img src="gg's.jpeg" onclick="openImage(this.src)">
+          <p>Pagalpaaaaan</p>
+        </div>
+
+        <div class="memory-card" style="--r:2deg">
+          <img src="melodious.jpeg" onclick="openImage(this.src)">
+          <p>Yapping Sessions</p>
+        </div>
+      </div>
+
+      <button class="yes" onclick="accept()">← Back</button>
+    </div>
+  `;
+}
+function openImage(src) {
+  const lightbox = document.createElement("div");
+  lightbox.className = "lightbox";
+
+  lightbox.innerHTML = `
+    <img src="${src}">
+  `;
+
+  lightbox.onclick = () => lightbox.remove();
+  document.body.appendChild(lightbox);
+}
+</script>
+
+</body>
+</html>
